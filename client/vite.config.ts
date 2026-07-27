@@ -9,14 +9,24 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    port: 5173,
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
-    chunkSizeWarningLimit: 1200,
+    outDir: "dist",
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom"],
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
           charts: ["recharts"],
-          markdown: ["react-markdown", "remark-gfm", "remark-math", "rehype-katex", "rehype-highlight"],
+          motion: ["framer-motion"],
         },
       },
     },

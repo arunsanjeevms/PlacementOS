@@ -1,6 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
-@import "katex/dist/katex.min.css";
-@import "highlight.js/styles/github-dark.css";
 
 @tailwind base;
 @tailwind components;
@@ -8,137 +6,144 @@
 
 @layer base {
   :root {
-    --radius: 0.75rem;
-    /* Accent hue — overridden by [data-accent] */
-    --accent-h: 262;
-    --accent-s: 83%;
-    --accent-l: 66%;
-
-    --background: 240 10% 98%;
-    --foreground: 240 10% 8%;
+    /* Light theme */
+    --background: 240 20% 99%;
+    --foreground: 240 10% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 8%;
+    --card-foreground: 240 10% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 8%;
-    --primary: var(--accent-h) var(--accent-s) var(--accent-l);
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 6% 93%;
-    --secondary-foreground: 240 6% 15%;
-    --muted: 240 6% 94%;
-    --muted-foreground: 240 4% 44%;
-    --accent: 240 6% 93%;
-    --accent-foreground: 240 6% 12%;
+    --popover-foreground: 240 10% 12%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 20%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 240 5% 94%;
+    --accent-foreground: 240 10% 15%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 6% 88%;
-    --input: 240 6% 88%;
-    --ring: var(--accent-h) var(--accent-s) var(--accent-l);
-    --sidebar: 240 8% 96%;
-    --success: 152 60% 42%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --sidebar: 240 20% 98%;
+    --sidebar-foreground: 240 10% 20%;
+    --sidebar-accent: 240 5% 92%;
+    --radius: 0.75rem;
+
+    /* accent (violet by default) */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 262 83% 58%;
   }
 
   .dark {
-    --background: 240 12% 5%;
-    --foreground: 240 8% 95%;
-    --card: 240 9% 8%;
-    --card-foreground: 240 8% 95%;
-    --popover: 240 10% 7%;
-    --popover-foreground: 240 8% 95%;
-    --primary: var(--accent-h) var(--accent-s) var(--accent-l);
-    --primary-foreground: 240 10% 5%;
-    --secondary: 240 6% 13%;
-    --secondary-foreground: 240 6% 90%;
-    --muted: 240 6% 12%;
-    --muted-foreground: 240 5% 60%;
-    --accent: 240 6% 14%;
-    --accent-foreground: 240 6% 92%;
-    --destructive: 0 62% 55%;
+    --background: 240 14% 6%;
+    --foreground: 240 10% 96%;
+    --card: 240 12% 9%;
+    --card-foreground: 240 10% 96%;
+    --popover: 240 12% 8%;
+    --popover-foreground: 240 10% 96%;
+    --secondary: 240 8% 14%;
+    --secondary-foreground: 240 10% 92%;
+    --muted: 240 8% 13%;
+    --muted-foreground: 240 6% 60%;
+    --accent: 240 8% 16%;
+    --accent-foreground: 240 10% 96%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 6% 15%;
-    --input: 240 6% 16%;
-    --ring: var(--accent-h) var(--accent-s) var(--accent-l);
-    --sidebar: 240 10% 6.5%;
-    --success: 152 55% 48%;
+    --success: 142 69% 48%;
+    --success-foreground: 0 0% 100%;
     --warning: 38 92% 55%;
+    --warning-foreground: 240 14% 8%;
+    --border: 240 8% 18%;
+    --input: 240 8% 20%;
+    --sidebar: 240 14% 7%;
+    --sidebar-foreground: 240 10% 88%;
+    --sidebar-accent: 240 8% 14%;
   }
 
-  [data-accent="violet"] { --accent-h: 262; --accent-s: 83%; --accent-l: 66%; }
-  [data-accent="blue"] { --accent-h: 217; --accent-s: 91%; --accent-l: 60%; }
-  [data-accent="cyan"] { --accent-h: 189; --accent-s: 94%; --accent-l: 50%; }
-  [data-accent="emerald"] { --accent-h: 152; --accent-s: 69%; --accent-l: 45%; }
-  [data-accent="amber"] { --accent-h: 38; --accent-s: 92%; --accent-l: 50%; }
-  [data-accent="rose"] { --accent-h: 350; --accent-s: 89%; --accent-l: 60%; }
-  [data-accent="orange"] { --accent-h: 25; --accent-s: 95%; --accent-l: 55%; }
+  /* ---- Accent palettes (swap primary + ring) ---- */
+  [data-accent="violet"] { --primary: 262 83% 58%; --ring: 262 83% 58%; }
+  [data-accent="blue"] { --primary: 217 91% 60%; --ring: 217 91% 60%; }
+  [data-accent="emerald"] { --primary: 160 84% 39%; --ring: 160 84% 39%; }
+  [data-accent="rose"] { --primary: 347 77% 55%; --ring: 347 77% 55%; }
+  [data-accent="amber"] { --primary: 32 95% 50%; --ring: 32 95% 50%; }
+  [data-accent="cyan"] { --primary: 189 94% 43%; --ring: 189 94% 43%; }
+  [data-accent="orange"] { --primary: 21 90% 55%; --ring: 21 90% 55%; }
+  [data-accent] { --primary-foreground: 0 0% 100%; }
 
   * {
     @apply border-border;
   }
-
   html {
     scroll-behavior: smooth;
   }
-
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-
-  ::selection {
-    background: hsl(var(--primary) / 0.25);
-  }
-
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-muted-foreground/20;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/35;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
   }
 }
 
 @layer components {
   .glass {
-    @apply border border-white/10 bg-white/60 backdrop-blur-xl dark:bg-white/[0.04];
+    @apply bg-card/60 backdrop-blur-xl border border-border/60;
   }
-
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl border border-border/70;
+  }
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5;
+    @apply transition-all duration-200 hover:border-border hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/20;
   }
-
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-primary to-primary/60 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent;
   }
-
-  .focus-glow:focus-visible {
-    @apply outline-none ring-2 ring-ring/60 ring-offset-2 ring-offset-background;
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 }
 
-/* Markdown prose for notes */
-.prose-notes {
-  @apply text-[15px] leading-7 text-foreground/90;
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
-.prose-notes h1 { @apply mb-3 mt-6 text-2xl font-bold text-foreground; }
-.prose-notes h2 { @apply mb-2 mt-5 border-b border-border pb-1 text-xl font-semibold text-foreground; }
-.prose-notes h3 { @apply mb-2 mt-4 text-lg font-semibold text-foreground; }
-.prose-notes p { @apply my-2.5; }
-.prose-notes ul { @apply my-2 list-disc pl-6; }
-.prose-notes ol { @apply my-2 list-decimal pl-6; }
-.prose-notes li { @apply my-1; }
-.prose-notes a { @apply text-primary underline underline-offset-2 hover:opacity-80; }
-.prose-notes blockquote { @apply my-3 border-l-4 border-primary/50 bg-primary/5 py-1 pl-4 italic text-muted-foreground; }
-.prose-notes code:not(pre code) { @apply rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-primary; }
-.prose-notes pre { @apply my-3 overflow-x-auto rounded-xl border border-border bg-[#0d1117] p-4 font-mono text-[13px]; }
-.prose-notes table { @apply my-3 w-full border-collapse text-sm; }
-.prose-notes th { @apply border border-border bg-muted px-3 py-2 text-left font-semibold; }
-.prose-notes td { @apply border border-border px-3 py-2; }
-.prose-notes hr { @apply my-6 border-border; }
-.prose-notes img { @apply my-3 max-w-full rounded-xl; }
-.prose-notes input[type="checkbox"] { @apply mr-2 accent-[hsl(var(--primary))]; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+  background-clip: content-box;
+}
+
+/* Skeleton shimmer */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.06), transparent);
+  animation: shimmer 1.5s infinite;
+}

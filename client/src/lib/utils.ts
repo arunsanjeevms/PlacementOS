@@ -1,34 +1,50 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export function cn(...inputs: ClassValue[]) {
+/** Merge Tailwind classes with conditional logic (shadcn convention). */
+export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 
-export const todayKey = () => {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-};
+/** Sleep helper for optimistic-UI demos / debouncing tests. */
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export const dateToKey = (d: Date) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+/** Clamp a number between min and max. */
+export const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
-export const keyToDate = (key: string) => {
-  const [y, m, d] = key.split("-").map(Number);
-  return new Date(y, m - 1, d);
-};
+/** Format minutes into a compact human string, e.g. 135 → "2h 15m". */
+export function formatMinutes(mins: number): string {
+  if (!mins || mins < 1) return "0m";
+  const h = Math.floor(mins / 60);
+  const m = Math.round(mins % 60);
+  if (h === 0) return `${m}m`;
+  if (m === 0) return `${h}h`;
+  return `${h}h ${m}m`;
+}
 
-export const fmtDuration = (min: number) => {
-  if (min < 60) return `${min}m`;
-  const h = Math.floor(min / 60);
-  const m = min % 60;
-  return m ? `${h}h ${m}m` : `${h}h`;
-};
+/** Format seconds as mm:ss (or hh:mm:ss when >= 1h). */
+export function formatClock(totalSeconds: number): string {
+  const s = Math.max(0, Math.floor(totalSeconds));
+  const hrs = Math.floor(s / 3600);
+  const mins = Math.floor((s % 3600) / 60);
+  const secs = s % 60;
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  return hrs > 0 ? `${pad(hrs)}:${pad(mins)}:${pad(secs)}` : `${pad(mins)}:${pad(secs)}`;
+}
 
-export const fmtClock = (totalSeconds: number) => {
-  const m = Math.floor(totalSeconds / 60);
-  const s = totalSeconds % 60;
-  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-};
+/** Get initials from a name for avatars. */
+export function initials(name: string): string {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((n) => n[0]?.toUpperCase())
+    .join("");
+}
 
-export const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
+/** Stable pseudo-random hue from a string (for tag/category colors). */
+export function stringToHue(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  return Math.abs(hash) % 360;
+}
