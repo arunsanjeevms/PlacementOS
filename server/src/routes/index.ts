@@ -8,6 +8,7 @@ import noteRoutes from "./note.routes.js";
 import resourceRoutes from "./resource.routes.js";
 import companyRoutes from "./company.routes.js";
 import journalRoutes from "./journal.routes.js";
+import analyticsRoutes from "./analytics.routes.js";
 
 const router = Router();
 
@@ -21,5 +22,6 @@ router.use("/notes", noteRoutes);
 router.use("/resources", resourceRoutes);
 router.use("/companies", companyRoutes);
 router.use("/journal", journalRoutes);
+router.use("/analytics", analyticsRoutes);
 
 export default router;

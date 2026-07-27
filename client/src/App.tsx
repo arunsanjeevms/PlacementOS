@@ -29,6 +29,10 @@ const BookmarksPage = lazy(() => import("@/pages/BookmarksPage"));
 const CompaniesPage = lazy(() => import("@/pages/CompaniesPage"));
 const InterviewJournalPage = lazy(() => import("@/pages/InterviewJournalPage"));
 const MockInterviewsPage = lazy(() => import("@/pages/MockInterviewsPage"));
+const CalendarPage = lazy(() => import("@/pages/CalendarPage"));
+const HeatmapPage = lazy(() => import("@/pages/HeatmapPage"));
+const StatisticsPage = lazy(() => import("@/pages/StatisticsPage"));
+const AchievementsPage = lazy(() => import("@/pages/AchievementsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -55,7 +59,7 @@ export default function App() {
             <Route path="tasks" element={<TasksPage />} />
             <Route path="weekly" element={<WeeklyPlannerPage />} />
             <Route path="monthly" element={<MonthlyPlannerPage />} />
-            <Route path="calendar" element={<ModulePlaceholder title="Calendar" />} />
+            <Route path="calendar" element={<CalendarPage />} />
             <Route path="pomodoro" element={<PomodoroPage />} />
             <Route path="java" element={<JavaTrackerPage />} />
             <Route path="dsa" element={<DsaTrackerPage />} />
@@ -67,9 +71,9 @@ export default function App() {
             <Route path="resources" element={<ResourcesPage />} />
             <Route path="notes" element={<NotesPage />} />
             <Route path="bookmarks" element={<BookmarksPage />} />
-            <Route path="heatmap" element={<ModulePlaceholder title="Heatmap" />} />
-            <Route path="stats" element={<ModulePlaceholder title="Statistics" />} />
-            <Route path="achievements" element={<ModulePlaceholder title="Achievements" />} />
+            <Route path="heatmap" element={<HeatmapPage />} />
+            <Route path="stats" element={<StatisticsPage />} />
+            <Route path="achievements" element={<AchievementsPage />} />
             <Route path="profile" element={<ModulePlaceholder title="Profile" />} />
             <Route path="settings" element={<ModulePlaceholder title="Settings" />} />
           </Route>
