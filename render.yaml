@@ -1,0 +1,37 @@
+# Render Blueprint for the PlacementOS API (free tier).
+# Create a new Blueprint on Render and point it at this repo.
+services:
+  - type: web
+    name: placementos-api
+    runtime: node
+    rootDir: server
+    plan: free
+    region: singapore
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # PORT is injected by Render automatically.
+      - key: MONGODB_URI
+        sync: false # set in the Render dashboard (MongoDB Atlas URI)
+      - key: CLIENT_URL
+        sync: false # your Vercel URL, e.g. https://placementos.vercel.app
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_ACCESS_EXPIRES
+        value: 15m
+      - key: JWT_REFRESH_EXPIRES
+        value: 30d
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        value: PlacementOS <onboarding@resend.dev>
+      - key: CRON_SECRET
+        generateValue: true
+      - key: ENABLE_CRON
+        value: "true"
