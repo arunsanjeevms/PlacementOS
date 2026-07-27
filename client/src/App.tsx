@@ -14,6 +14,10 @@ const VerifyEmailPage = lazy(() => import("@/pages/auth/VerifyEmailPage"));
 
 // App pages
 const DashboardPage = lazy(() => import("@/pages/DashboardPage"));
+const TodayPage = lazy(() => import("@/pages/TodayPage"));
+const TasksPage = lazy(() => import("@/pages/TasksPage"));
+const WeeklyPlannerPage = lazy(() => import("@/pages/WeeklyPlannerPage"));
+const MonthlyPlannerPage = lazy(() => import("@/pages/MonthlyPlannerPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -36,10 +40,10 @@ export default function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/app" element={<AppLayout />}>
             <Route index element={<DashboardPage />} />
-            <Route path="today" element={<ModulePlaceholder title="Today" description="Your focused plan for the day." />} />
-            <Route path="tasks" element={<ModulePlaceholder title="Tasks" description="Plan, prioritize and track everything." />} />
-            <Route path="weekly" element={<ModulePlaceholder title="Weekly Planner" />} />
-            <Route path="monthly" element={<ModulePlaceholder title="Monthly Planner" />} />
+            <Route path="today" element={<TodayPage />} />
+            <Route path="tasks" element={<TasksPage />} />
+            <Route path="weekly" element={<WeeklyPlannerPage />} />
+            <Route path="monthly" element={<MonthlyPlannerPage />} />
             <Route path="calendar" element={<ModulePlaceholder title="Calendar" />} />
             <Route path="pomodoro" element={<ModulePlaceholder title="Pomodoro" description="Deep-focus study timer." />} />
             <Route path="java" element={<ModulePlaceholder title="Java Roadmap" />} />
