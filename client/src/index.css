@@ -134,6 +134,165 @@
   background-clip: content-box;
 }
 
+/* ---------------- TipTap editor ---------------- */
+.tiptap {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: hsl(var(--foreground));
+}
+.tiptap > * + * {
+  margin-top: 0.75em;
+}
+.tiptap h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 1.2em;
+}
+.tiptap h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 1.1em;
+}
+.tiptap h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin-top: 1em;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+  height: 0;
+}
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.4rem;
+}
+.tiptap ul {
+  list-style: disc;
+}
+.tiptap ol {
+  list-style: decimal;
+}
+.tiptap ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0.2rem;
+}
+.tiptap ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.tiptap ul[data-type="taskList"] li > label {
+  margin-top: 0.15rem;
+}
+.tiptap ul[data-type="taskList"] input[type="checkbox"] {
+  accent-color: hsl(var(--primary));
+  width: 1rem;
+  height: 1rem;
+}
+.tiptap blockquote {
+  border-left: 3px solid hsl(var(--primary));
+  padding-left: 1rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+.tiptap a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.tiptap code {
+  background: hsl(var(--muted));
+  padding: 0.15em 0.35em;
+  border-radius: 0.3rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85em;
+}
+.tiptap pre {
+  background: hsl(240 12% 12%);
+  color: #e4e4e7;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+}
+.tiptap pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+.tiptap hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 1.5em 0;
+}
+.tiptap img {
+  max-width: 100%;
+  border-radius: 0.75rem;
+}
+.tiptap table {
+  border-collapse: collapse;
+  width: 100%;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+.tiptap th,
+.tiptap td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  min-width: 4rem;
+}
+.tiptap th {
+  background: hsl(var(--muted));
+  font-weight: 600;
+}
+.tiptap .ProseMirror-selectednode {
+  outline: 2px solid hsl(var(--primary));
+}
+
+/* highlight.js tokens (used by CodeBlockLowlight) */
+.hljs-comment,
+.hljs-quote {
+  color: #7c7c8a;
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: #c792ea;
+}
+.hljs-string,
+.hljs-attr {
+  color: #a5e075;
+}
+.hljs-number,
+.hljs-literal {
+  color: #f78c6c;
+}
+.hljs-title,
+.hljs-function,
+.hljs-section {
+  color: #82aaff;
+}
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #ffcb6b;
+}
+.hljs-tag,
+.hljs-name {
+  color: #f07178;
+}
+.hljs-variable,
+.hljs-template-variable {
+  color: #eeffff;
+}
+
 /* Skeleton shimmer */
 .shimmer {
   position: relative;

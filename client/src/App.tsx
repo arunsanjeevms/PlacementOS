@@ -23,6 +23,7 @@ const JavaTrackerPage = lazy(() => import("@/pages/JavaTrackerPage"));
 const DsaTrackerPage = lazy(() => import("@/pages/DsaTrackerPage"));
 const AptitudeTrackerPage = lazy(() => import("@/pages/AptitudeTrackerPage"));
 const ProjectsPage = lazy(() => import("@/pages/ProjectsPage"));
+const NotesPage = lazy(() => import("@/pages/NotesPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -59,7 +60,7 @@ export default function App() {
             <Route path="mocks" element={<ModulePlaceholder title="Mock Interviews" />} />
             <Route path="companies" element={<ModulePlaceholder title="Company Tracker" />} />
             <Route path="resources" element={<ModulePlaceholder title="Resources" />} />
-            <Route path="notes" element={<ModulePlaceholder title="Notes" />} />
+            <Route path="notes" element={<NotesPage />} />
             <Route path="bookmarks" element={<ModulePlaceholder title="Bookmarks" />} />
             <Route path="heatmap" element={<ModulePlaceholder title="Heatmap" />} />
             <Route path="stats" element={<ModulePlaceholder title="Statistics" />} />

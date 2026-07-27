@@ -4,6 +4,7 @@ import taskRoutes from "./task.routes.js";
 import sessionRoutes from "./session.routes.js";
 import topicRoutes from "./topic.routes.js";
 import projectRoutes from "./project.routes.js";
+import noteRoutes from "./note.routes.js";
 
 const router = Router();
 
@@ -13,5 +14,6 @@ router.use("/tasks", taskRoutes);
 router.use("/sessions", sessionRoutes);
 router.use("/topics", topicRoutes);
 router.use("/projects", projectRoutes);
+router.use("/notes", noteRoutes);
 
 export default router;
