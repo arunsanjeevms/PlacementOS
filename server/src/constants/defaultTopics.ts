@@ -1,0 +1,60 @@
+import type { TrackerKind } from "./enums.js";
+
+/** Seed topics for a new user, per tracker. */
+export const DEFAULT_TOPICS: Record<TrackerKind, string[]> = {
+  java: [
+    "Basics",
+    "OOP",
+    "Collections",
+    "Exception Handling",
+    "Generics",
+    "Streams",
+    "Lambda",
+    "JDBC",
+    "Multithreading",
+    "Networking",
+    "Spring Boot",
+    "REST APIs",
+  ],
+  dsa: [
+    "Arrays",
+    "Strings",
+    "Linked List",
+    "Stack",
+    "Queue",
+    "HashMap",
+    "Binary Search",
+    "Trees",
+    "BST",
+    "Heap",
+    "Trie",
+    "Graph",
+    "Dynamic Programming",
+    "Greedy",
+    "Sliding Window",
+    "Recursion",
+    "Backtracking",
+    "Bit Manipulation",
+    "Math",
+  ],
+  aptitude: [
+    "Percentages",
+    "Profit & Loss",
+    "Ratio & Proportion",
+    "Probability",
+    "Permutation",
+    "Combination",
+    "Time Speed Distance",
+    "Time & Work",
+    "Pipes & Cisterns",
+    "Clocks",
+    "Calendars",
+    "Blood Relations",
+    "Coding Decoding",
+    "Number Series",
+    "Puzzles",
+  ],
+};
+
+/** Rough default problem targets per DSA topic difficulty (used to seed totals). */
+export const DSA_DEFAULT_TOTALS = { easy: 10, medium: 12, hard: 6 };

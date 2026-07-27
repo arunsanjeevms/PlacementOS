@@ -2,6 +2,7 @@ import { Router } from "express";
 import authRoutes from "./auth.routes.js";
 import taskRoutes from "./task.routes.js";
 import sessionRoutes from "./session.routes.js";
+import topicRoutes from "./topic.routes.js";
 
 const router = Router();
 
@@ -9,5 +10,6 @@ const router = Router();
 router.use("/auth", authRoutes);
 router.use("/tasks", taskRoutes);
 router.use("/sessions", sessionRoutes);
+router.use("/topics", topicRoutes);
 
 export default router;

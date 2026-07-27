@@ -19,6 +19,9 @@ const TasksPage = lazy(() => import("@/pages/TasksPage"));
 const WeeklyPlannerPage = lazy(() => import("@/pages/WeeklyPlannerPage"));
 const MonthlyPlannerPage = lazy(() => import("@/pages/MonthlyPlannerPage"));
 const PomodoroPage = lazy(() => import("@/pages/PomodoroPage"));
+const JavaTrackerPage = lazy(() => import("@/pages/JavaTrackerPage"));
+const DsaTrackerPage = lazy(() => import("@/pages/DsaTrackerPage"));
+const AptitudeTrackerPage = lazy(() => import("@/pages/AptitudeTrackerPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -47,9 +50,9 @@ export default function App() {
             <Route path="monthly" element={<MonthlyPlannerPage />} />
             <Route path="calendar" element={<ModulePlaceholder title="Calendar" />} />
             <Route path="pomodoro" element={<PomodoroPage />} />
-            <Route path="java" element={<ModulePlaceholder title="Java Roadmap" />} />
-            <Route path="dsa" element={<ModulePlaceholder title="DSA Roadmap" />} />
-            <Route path="aptitude" element={<ModulePlaceholder title="Aptitude" />} />
+            <Route path="java" element={<JavaTrackerPage />} />
+            <Route path="dsa" element={<DsaTrackerPage />} />
+            <Route path="aptitude" element={<AptitudeTrackerPage />} />
             <Route path="projects" element={<ModulePlaceholder title="Projects" />} />
             <Route path="journal" element={<ModulePlaceholder title="Interview Journal" />} />
             <Route path="mocks" element={<ModulePlaceholder title="Mock Interviews" />} />
