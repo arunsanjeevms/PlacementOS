@@ -9,11 +9,14 @@ import resourceRoutes from "./resource.routes.js";
 import companyRoutes from "./company.routes.js";
 import journalRoutes from "./journal.routes.js";
 import analyticsRoutes from "./analytics.routes.js";
+import userRoutes from "./user.routes.js";
+import cronRoutes from "./cron.routes.js";
 
 const router = Router();
 
 /** Mounts every module router under /api. New modules are added here as they land. */
 router.use("/auth", authRoutes);
+router.use("/users", userRoutes);
 router.use("/tasks", taskRoutes);
 router.use("/sessions", sessionRoutes);
 router.use("/topics", topicRoutes);
@@ -23,5 +26,6 @@ router.use("/resources", resourceRoutes);
 router.use("/companies", companyRoutes);
 router.use("/journal", journalRoutes);
 router.use("/analytics", analyticsRoutes);
+router.use("/cron", cronRoutes);
 
 export default router;

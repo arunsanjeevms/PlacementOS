@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { ProtectedRoute, PublicOnlyRoute } from "@/components/auth/RouteGuards";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
-import { ModulePlaceholder } from "@/pages/ModulePlaceholder";
 
 // Auth pages
 const LoginPage = lazy(() => import("@/pages/auth/LoginPage"));
@@ -33,6 +32,8 @@ const CalendarPage = lazy(() => import("@/pages/CalendarPage"));
 const HeatmapPage = lazy(() => import("@/pages/HeatmapPage"));
 const StatisticsPage = lazy(() => import("@/pages/StatisticsPage"));
 const AchievementsPage = lazy(() => import("@/pages/AchievementsPage"));
+const ProfilePage = lazy(() => import("@/pages/ProfilePage"));
+const SettingsPage = lazy(() => import("@/pages/SettingsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -74,8 +75,8 @@ export default function App() {
             <Route path="heatmap" element={<HeatmapPage />} />
             <Route path="stats" element={<StatisticsPage />} />
             <Route path="achievements" element={<AchievementsPage />} />
-            <Route path="profile" element={<ModulePlaceholder title="Profile" />} />
-            <Route path="settings" element={<ModulePlaceholder title="Settings" />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="settings" element={<SettingsPage />} />
           </Route>
         </Route>
 

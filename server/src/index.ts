@@ -3,6 +3,7 @@ import { connectDatabase, disconnectDatabase } from "./config/db.js";
 import { env } from "./config/env.js";
 import { logger } from "./utils/logger.js";
 import { startCronJobs } from "./cron/index.js";
+import "./cron/jobs.js"; // registers scheduled jobs
 
 async function bootstrap(): Promise<void> {
   await connectDatabase();

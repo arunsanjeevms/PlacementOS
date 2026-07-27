@@ -10,6 +10,15 @@ import { Toaster } from "@/components/ui/sonner";
 import { queryClient } from "@/lib/queryClient";
 import "./index.css";
 
+// Register the PWA service worker in production for offline support & installability.
+if ("serviceWorker" in navigator && import.meta.env.PROD) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {
+      /* SW registration is best-effort */
+    });
+  });
+}
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>

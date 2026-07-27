@@ -1,0 +1,16 @@
+{
+  "name": "PlacementOS — Placement Prep OS",
+  "short_name": "PlacementOS",
+  "description": "The personal productivity operating system for placement preparation.",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b0b12",
+  "theme_color": "#0b0b12",
+  "categories": ["productivity", "education"],
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
