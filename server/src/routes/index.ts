@@ -3,6 +3,7 @@ import authRoutes from "./auth.routes.js";
 import taskRoutes from "./task.routes.js";
 import sessionRoutes from "./session.routes.js";
 import topicRoutes from "./topic.routes.js";
+import projectRoutes from "./project.routes.js";
 
 const router = Router();
 
@@ -11,5 +12,6 @@ router.use("/auth", authRoutes);
 router.use("/tasks", taskRoutes);
 router.use("/sessions", sessionRoutes);
 router.use("/topics", topicRoutes);
+router.use("/projects", projectRoutes);
 
 export default router;

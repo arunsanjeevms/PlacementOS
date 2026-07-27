@@ -22,6 +22,7 @@ const PomodoroPage = lazy(() => import("@/pages/PomodoroPage"));
 const JavaTrackerPage = lazy(() => import("@/pages/JavaTrackerPage"));
 const DsaTrackerPage = lazy(() => import("@/pages/DsaTrackerPage"));
 const AptitudeTrackerPage = lazy(() => import("@/pages/AptitudeTrackerPage"));
+const ProjectsPage = lazy(() => import("@/pages/ProjectsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -53,7 +54,7 @@ export default function App() {
             <Route path="java" element={<JavaTrackerPage />} />
             <Route path="dsa" element={<DsaTrackerPage />} />
             <Route path="aptitude" element={<AptitudeTrackerPage />} />
-            <Route path="projects" element={<ModulePlaceholder title="Projects" />} />
+            <Route path="projects" element={<ProjectsPage />} />
             <Route path="journal" element={<ModulePlaceholder title="Interview Journal" />} />
             <Route path="mocks" element={<ModulePlaceholder title="Mock Interviews" />} />
             <Route path="companies" element={<ModulePlaceholder title="Company Tracker" />} />
