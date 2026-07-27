@@ -18,6 +18,7 @@ const TodayPage = lazy(() => import("@/pages/TodayPage"));
 const TasksPage = lazy(() => import("@/pages/TasksPage"));
 const WeeklyPlannerPage = lazy(() => import("@/pages/WeeklyPlannerPage"));
 const MonthlyPlannerPage = lazy(() => import("@/pages/MonthlyPlannerPage"));
+const PomodoroPage = lazy(() => import("@/pages/PomodoroPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -45,7 +46,7 @@ export default function App() {
             <Route path="weekly" element={<WeeklyPlannerPage />} />
             <Route path="monthly" element={<MonthlyPlannerPage />} />
             <Route path="calendar" element={<ModulePlaceholder title="Calendar" />} />
-            <Route path="pomodoro" element={<ModulePlaceholder title="Pomodoro" description="Deep-focus study timer." />} />
+            <Route path="pomodoro" element={<PomodoroPage />} />
             <Route path="java" element={<ModulePlaceholder title="Java Roadmap" />} />
             <Route path="dsa" element={<ModulePlaceholder title="DSA Roadmap" />} />
             <Route path="aptitude" element={<ModulePlaceholder title="Aptitude" />} />
