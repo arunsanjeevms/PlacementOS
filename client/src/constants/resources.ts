@@ -1,0 +1,68 @@
+import {
+  Globe,
+  Github,
+  Youtube,
+  BookOpen,
+  FileText,
+  GraduationCap,
+  File,
+  HardDrive,
+  Linkedin,
+  Twitter,
+  Code2,
+  Boxes,
+  Trophy,
+  MessagesSquare,
+  ScrollText,
+  Map,
+  Dumbbell,
+  type LucideIcon,
+} from "lucide-react";
+
+export const RESOURCE_TYPES = [
+  "website",
+  "github",
+  "youtube_video",
+  "youtube_playlist",
+  "documentation",
+  "article",
+  "course",
+  "pdf",
+  "drive",
+  "linkedin",
+  "twitter",
+  "leetcode",
+  "geeksforgeeks",
+  "codeforces",
+  "hackerrank",
+  "interview_experience",
+  "cheat_sheet",
+  "roadmap",
+  "practice_platform",
+] as const;
+
+export type ResourceType = (typeof RESOURCE_TYPES)[number];
+
+export const RESOURCE_TYPE_META: Record<ResourceType, { label: string; icon: LucideIcon; hue: number }> = {
+  website: { label: "Website", icon: Globe, hue: 217 },
+  github: { label: "GitHub Repo", icon: Github, hue: 240 },
+  youtube_video: { label: "YouTube Video", icon: Youtube, hue: 0 },
+  youtube_playlist: { label: "YouTube Playlist", icon: Youtube, hue: 0 },
+  documentation: { label: "Documentation", icon: BookOpen, hue: 190 },
+  article: { label: "Article", icon: FileText, hue: 47 },
+  course: { label: "Course", icon: GraduationCap, hue: 262 },
+  pdf: { label: "PDF", icon: File, hue: 0 },
+  drive: { label: "Drive Link", icon: HardDrive, hue: 130 },
+  linkedin: { label: "LinkedIn Post", icon: Linkedin, hue: 205 },
+  twitter: { label: "Twitter Thread", icon: Twitter, hue: 203 },
+  leetcode: { label: "LeetCode", icon: Code2, hue: 33 },
+  geeksforgeeks: { label: "GeeksForGeeks", icon: Boxes, hue: 130 },
+  codeforces: { label: "Codeforces", icon: Trophy, hue: 217 },
+  hackerrank: { label: "HackerRank", icon: Trophy, hue: 130 },
+  interview_experience: { label: "Interview Experience", icon: MessagesSquare, hue: 291 },
+  cheat_sheet: { label: "Cheat Sheet", icon: ScrollText, hue: 47 },
+  roadmap: { label: "Roadmap", icon: Map, hue: 160 },
+  practice_platform: { label: "Practice Platform", icon: Dumbbell, hue: 12 },
+};
+
+export const DIFFICULTIES = ["easy", "medium", "hard"] as const;

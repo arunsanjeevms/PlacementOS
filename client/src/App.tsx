@@ -24,6 +24,8 @@ const DsaTrackerPage = lazy(() => import("@/pages/DsaTrackerPage"));
 const AptitudeTrackerPage = lazy(() => import("@/pages/AptitudeTrackerPage"));
 const ProjectsPage = lazy(() => import("@/pages/ProjectsPage"));
 const NotesPage = lazy(() => import("@/pages/NotesPage"));
+const ResourcesPage = lazy(() => import("@/pages/ResourcesPage"));
+const BookmarksPage = lazy(() => import("@/pages/BookmarksPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 export default function App() {
@@ -59,9 +61,9 @@ export default function App() {
             <Route path="journal" element={<ModulePlaceholder title="Interview Journal" />} />
             <Route path="mocks" element={<ModulePlaceholder title="Mock Interviews" />} />
             <Route path="companies" element={<ModulePlaceholder title="Company Tracker" />} />
-            <Route path="resources" element={<ModulePlaceholder title="Resources" />} />
+            <Route path="resources" element={<ResourcesPage />} />
             <Route path="notes" element={<NotesPage />} />
-            <Route path="bookmarks" element={<ModulePlaceholder title="Bookmarks" />} />
+            <Route path="bookmarks" element={<BookmarksPage />} />
             <Route path="heatmap" element={<ModulePlaceholder title="Heatmap" />} />
             <Route path="stats" element={<ModulePlaceholder title="Statistics" />} />
             <Route path="achievements" element={<ModulePlaceholder title="Achievements" />} />
