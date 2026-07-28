@@ -23,10 +23,13 @@ export const env = {
   isDev: !isProd,
   port: Number(process.env.PORT ?? 5000),
 
-  /** Allowed CORS origins (comma separated). */
+  /** Allowed CORS origins (comma separated). Trailing slashes are stripped so
+   * "https://x.vercel.app/" and "https://x.vercel.app" both match — browsers
+   * never send a trailing slash in the Origin header, so a pasted URL with
+   * one is a common source of otherwise-invisible CORS failures. */
   clientUrls: optional("CLIENT_URL", "http://localhost:5173")
     .split(",")
-    .map((u) => u.trim())
+    .map((u) => u.trim().replace(/\/+$/, ""))
     .filter(Boolean),
 
   mongoUri: required("MONGODB_URI", isProd ? undefined : "mongodb://127.0.0.1:27017/placementos"),

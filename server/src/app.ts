@@ -7,6 +7,7 @@ import { env } from "./config/env.js";
 import routes from "./routes/index.js";
 import { errorHandler, notFound } from "./middlewares/error.js";
 import { globalLimiter } from "./middlewares/rateLimit.js";
+import { logger } from "./utils/logger.js";
 
 export function createApp(): Application {
   const app = express();
@@ -19,7 +20,10 @@ export function createApp(): Application {
       origin(origin, callback) {
         // Allow same-origin / server-to-server (no origin) and whitelisted client URLs.
         if (!origin || env.clientUrls.includes(origin)) return callback(null, true);
-        return callback(new Error(`Origin not allowed by CORS: ${origin}`));
+        // Reject without throwing: cors just omits the CORS headers, so the browser
+        // reports a normal CORS block instead of this bubbling to a 500 error response.
+        logger.warn(`CORS blocked origin "${origin}" — allowed: [${env.clientUrls.join(", ")}]`);
+        return callback(null, false);
       },
       credentials: true,
     })
