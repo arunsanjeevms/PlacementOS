@@ -7,7 +7,9 @@ services:
     rootDir: server
     plan: free
     region: singapore
-    buildCommand: npm install && npm run build
+    # --include=dev is required: NODE_ENV=production (set below) makes npm
+    # skip devDependencies otherwise, which is where typescript/@types/tsx live.
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
     autoDeploy: true
