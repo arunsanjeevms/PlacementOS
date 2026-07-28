@@ -2,11 +2,13 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { sendCreated, sendSuccess } from "../utils/response.js";
 import { ApiError } from "../utils/ApiError.js";
 import { Topic } from "../models/Topic.js";
-import { getTrackerSummary } from "../services/topic.service.js";
+import { getTrackerSummary, seedKindForUser } from "../services/topic.service.js";
 import type { TrackerKind } from "../constants/enums.js";
 
 export const listTopics = asyncHandler(async (req, res) => {
   const kind = req.query.kind as TrackerKind;
+  // Lazily seed defaults so accounts created before a tracker existed get its topics.
+  await seedKindForUser(req.user!.id, kind);
   const topics = await Topic.find({ user: req.user!.id, kind }).sort({ order: 1, createdAt: 1 });
   return sendSuccess(res, topics, "Topics");
 });

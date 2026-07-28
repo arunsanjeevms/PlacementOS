@@ -101,7 +101,7 @@ export function TopicCard({ kind, topic, onOpenDetail }: { kind: TrackerKind; to
 
         {/* Body */}
         <div className="mt-3">
-          {kind === "java" && (
+          {(kind === "java" || kind === "core") && (
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <span>Completion</span>

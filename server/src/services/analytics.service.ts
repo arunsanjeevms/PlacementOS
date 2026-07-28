@@ -124,10 +124,11 @@ export async function getStatistics(userId: string, days = 30) {
 }
 
 export async function getReadiness(userId: string) {
-  const [dsa, java, apt, projects, interviews, sessionAgg, companiesApplied, sessionDays] = await Promise.all([
+  const [dsa, java, apt, core, projects, interviews, sessionAgg, companiesApplied, sessionDays] = await Promise.all([
     getTrackerSummary(userId, "dsa"),
     getTrackerSummary(userId, "java"),
     getTrackerSummary(userId, "aptitude"),
+    getTrackerSummary(userId, "core"),
     Project.countDocuments({ user: userId, status: "completed" }),
     Journal.countDocuments({ user: userId }),
     Session.aggregate<{ minutes: number }>([{ $match: { user: oid(userId) } }, { $group: { _id: null, minutes: { $sum: "$durationMinutes" } } }]),
@@ -141,13 +142,14 @@ export async function getReadiness(userId: string) {
   const clamp = (v: number) => Math.min(1, Math.max(0, v));
   const components = [
     { key: "DSA", weight: 25, value: dsa.progress / 100 },
-    { key: "Java", weight: 15, value: java.progress / 100 },
+    { key: "Java", weight: 12, value: java.progress / 100 },
+    { key: "CS Fundamentals", weight: 13, value: core.progress / 100 },
     { key: "Aptitude", weight: 10, value: apt.progress / 100 },
-    { key: "Projects", weight: 15, value: clamp(projects / 3) },
-    { key: "Interviews", weight: 10, value: clamp(interviews / 5) },
-    { key: "Study Hours", weight: 15, value: clamp(totalHours / 150) },
+    { key: "Projects", weight: 12, value: clamp(projects / 3) },
+    { key: "Interviews", weight: 8, value: clamp(interviews / 5) },
+    { key: "Study Hours", weight: 12, value: clamp(totalHours / 150) },
     { key: "Consistency", weight: 5, value: clamp(streak.current / 30) },
-    { key: "Applications", weight: 5, value: clamp(companiesApplied / 10) },
+    { key: "Applications", weight: 3, value: clamp(companiesApplied / 10) },
   ];
   const score = Math.round(components.reduce((s, c) => s + c.value * c.weight, 0));
   return {

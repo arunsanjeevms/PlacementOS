@@ -1,4 +1,4 @@
-export type TrackerKind = "java" | "dsa" | "aptitude";
+export type TrackerKind = "java" | "dsa" | "aptitude" | "core";
 export type TopicStatus = "not_started" | "learning" | "completed";
 
 export interface Count {

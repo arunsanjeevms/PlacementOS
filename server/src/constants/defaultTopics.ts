@@ -1,6 +1,6 @@
 import type { TrackerKind } from "./enums.js";
 
-/** Seed topics for a new user, per tracker. */
+/** Seed topics for a new user, per tracker. Ordered by placement priority. */
 export const DEFAULT_TOPICS: Record<TrackerKind, string[]> = {
   java: [
     "Basics",
@@ -8,8 +8,11 @@ export const DEFAULT_TOPICS: Record<TrackerKind, string[]> = {
     "Collections",
     "Exception Handling",
     "Generics",
+    "Comparable & Comparator",
     "Streams",
     "Lambda",
+    "Java 8 Features",
+    "File Handling",
     "JDBC",
     "Multithreading",
     "Networking",
@@ -19,11 +22,13 @@ export const DEFAULT_TOPICS: Record<TrackerKind, string[]> = {
   dsa: [
     "Arrays",
     "Strings",
-    "Linked List",
+    "Two Pointers",
+    "Sliding Window",
+    "Binary Search",
+    "HashMap",
     "Stack",
     "Queue",
-    "HashMap",
-    "Binary Search",
+    "Linked List",
     "Trees",
     "BST",
     "Heap",
@@ -31,30 +36,98 @@ export const DEFAULT_TOPICS: Record<TrackerKind, string[]> = {
     "Graph",
     "Dynamic Programming",
     "Greedy",
-    "Sliding Window",
     "Recursion",
     "Backtracking",
     "Bit Manipulation",
     "Math",
   ],
   aptitude: [
+    // Quantitative — Level 1 (appear in almost every company)
+    "Number System",
     "Percentages",
     "Profit & Loss",
     "Ratio & Proportion",
-    "Probability",
-    "Permutation",
-    "Combination",
-    "Time Speed Distance",
+    "Averages",
+    "Simple & Compound Interest",
     "Time & Work",
     "Pipes & Cisterns",
-    "Clocks",
-    "Calendars",
+    "Time Speed Distance",
+    "Ages",
+    "Mixtures & Alligations",
+    // Logical — ★★★★★
+    "Seating Arrangement",
+    "Puzzles",
     "Blood Relations",
     "Coding Decoding",
+    "Direction Sense",
+    "Syllogism",
     "Number Series",
-    "Puzzles",
+    // Level 2
+    "Permutation & Combination",
+    "Probability",
+    "Clocks",
+    "Calendars",
+    "Logarithms",
+    "Progressions",
+    "Geometry & Mensuration",
+    // DI & DS
+    "Data Interpretation",
+    "Data Sufficiency",
+    // Verbal — ★★★★★
+    "Reading Comprehension",
+    "Sentence Correction",
+    "Error Spotting",
+    "Para Jumbles",
+    "Vocabulary",
+  ],
+  core: [
+    "SQL",
+    "DBMS",
+    "Operating Systems",
+    "Computer Networks",
+    "OOPS Concepts",
+    "System Design Basics",
+    "Git & GitHub",
+    "Web Development",
+    "Resume & Projects",
+    "HR Interview",
+    "Group Discussion",
+    "Communication",
   ],
 };
 
-/** Rough default problem targets per DSA topic difficulty (used to seed totals). */
-export const DSA_DEFAULT_TOTALS = { easy: 10, medium: 12, hard: 6 };
+interface DsaTotals {
+  easy: number;
+  medium: number;
+  hard: number;
+}
+
+/** Fallback problem targets for DSA topics without a specific target. */
+export const DSA_DEFAULT_TOTALS: DsaTotals = { easy: 3, medium: 5, hard: 2 };
+
+/**
+ * Per-topic problem targets (~300–350 quality problems overall), split
+ * roughly 30% easy / 50% medium / 20% hard.
+ */
+export const DSA_TOPIC_TOTALS: Record<string, DsaTotals> = {
+  Arrays: { easy: 9, medium: 15, hard: 6 },
+  Strings: { easy: 9, medium: 15, hard: 6 },
+  "Two Pointers": { easy: 6, medium: 10, hard: 4 },
+  "Sliding Window": { easy: 6, medium: 10, hard: 4 },
+  "Binary Search": { easy: 8, medium: 12, hard: 5 },
+  HashMap: { easy: 6, medium: 10, hard: 4 },
+  Stack: { easy: 6, medium: 10, hard: 4 },
+  Queue: { easy: 5, medium: 7, hard: 3 },
+  "Linked List": { easy: 9, medium: 15, hard: 6 },
+  Trees: { easy: 12, medium: 20, hard: 8 },
+  BST: { easy: 6, medium: 10, hard: 4 },
+  Heap: { easy: 5, medium: 7, hard: 3 },
+  Trie: { easy: 3, medium: 5, hard: 2 },
+  Graph: { easy: 12, medium: 20, hard: 8 },
+  "Dynamic Programming": { easy: 10, medium: 18, hard: 7 },
+  Greedy: { easy: 5, medium: 7, hard: 3 },
+  Recursion: { easy: 6, medium: 10, hard: 4 },
+  Backtracking: { easy: 6, medium: 10, hard: 4 },
+  "Bit Manipulation": { easy: 3, medium: 5, hard: 2 },
+  Math: { easy: 3, medium: 5, hard: 2 },
+};

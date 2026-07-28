@@ -75,7 +75,7 @@ export function TrackerPage({ kind, title, description, icon }: TrackerConfig) {
                 }
               />
             )}
-            {kind === "java" && (
+            {(kind === "java" || kind === "core") && (
               <SummaryStat label="Practice Qs" value={topics.reduce((s, t) => s + t.practiceQuestions, 0)} />
             )}
             {kind === "aptitude" && <SummaryStat label="Solved" value={summary?.totalSolved ?? 0} />}

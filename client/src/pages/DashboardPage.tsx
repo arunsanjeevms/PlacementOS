@@ -193,9 +193,9 @@ export default function DashboardPage() {
               <>
                 <ProgressRing value={data?.readiness.score ?? 0} size={120} label="Ready" />
                 <div className="w-full space-y-1.5">
-                  {(data?.readiness.components ?? []).slice(0, 4).map((c) => (
+                  {(data?.readiness.components ?? []).slice(0, 5).map((c) => (
                     <div key={c.label} className="flex items-center gap-2 text-xs">
-                      <span className="w-20 shrink-0 truncate text-muted-foreground">{c.label}</span>
+                      <span className="w-24 shrink-0 truncate text-muted-foreground">{c.label}</span>
                       <Progress value={c.score} className="h-1.5 flex-1" />
                       <span className="w-8 text-right tabular-nums text-muted-foreground">{c.score}%</span>
                     </div>

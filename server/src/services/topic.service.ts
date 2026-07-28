@@ -1,30 +1,40 @@
 import { Types } from "mongoose";
 import { Topic } from "../models/Topic.js";
-import { DEFAULT_TOPICS, DSA_DEFAULT_TOTALS } from "../constants/defaultTopics.js";
+import { DEFAULT_TOPICS, DSA_DEFAULT_TOTALS, DSA_TOPIC_TOTALS } from "../constants/defaultTopics.js";
 import { TRACKER_KINDS, type TrackerKind } from "../constants/enums.js";
 import { registerSeeder } from "./seed.service.js";
 
-/** Create the default topic set for a new user across all three trackers. */
-export async function seedTopicsForUser(userId: string): Promise<void> {
-  const existing = await Topic.countDocuments({ user: userId });
+/**
+ * Seed one tracker's default topics if the user has none of that kind yet.
+ * Per-kind (not all-or-nothing) so existing accounts pick up newly added
+ * trackers the first time they open them.
+ */
+export async function seedKindForUser(userId: string, kind: TrackerKind): Promise<void> {
+  const existing = await Topic.countDocuments({ user: userId, kind });
   if (existing > 0) return;
 
-  const docs = TRACKER_KINDS.flatMap((kind) =>
-    DEFAULT_TOPICS[kind].map((name, i) => ({
+  const docs = DEFAULT_TOPICS[kind].map((name, i) => {
+    const totals = kind === "dsa" ? DSA_TOPIC_TOTALS[name] ?? DSA_DEFAULT_TOTALS : null;
+    return {
       user: new Types.ObjectId(userId),
       kind,
       name,
       order: i,
-      ...(kind === "dsa"
+      ...(totals
         ? {
-            easy: { solved: 0, total: DSA_DEFAULT_TOTALS.easy },
-            medium: { solved: 0, total: DSA_DEFAULT_TOTALS.medium },
-            hard: { solved: 0, total: DSA_DEFAULT_TOTALS.hard },
+            easy: { solved: 0, total: totals.easy },
+            medium: { solved: 0, total: totals.medium },
+            hard: { solved: 0, total: totals.hard },
           }
         : {}),
-    }))
-  );
+    };
+  });
   await Topic.insertMany(docs);
+}
+
+/** Create the default topic set for a new user across all trackers. */
+export async function seedTopicsForUser(userId: string): Promise<void> {
+  for (const kind of TRACKER_KINDS) await seedKindForUser(userId, kind);
 }
 
 // Register with the sign-up seeder pipeline (runs once when this module loads).
@@ -56,7 +66,7 @@ export async function getTrackerSummary(userId: string, kind: TrackerKind): Prom
   const base: TrackerSummary = { kind, totalTopics, completedTopics, weakTopics, progress: 0 };
   if (totalTopics === 0) return base;
 
-  if (kind === "java") {
+  if (kind === "java" || kind === "core") {
     base.progress = Math.round(topics.reduce((s, t) => s + t.completion, 0) / totalTopics);
   } else if (kind === "dsa") {
     const acc = { easy: { solved: 0, total: 0 }, medium: { solved: 0, total: 0 }, hard: { solved: 0, total: 0 } };

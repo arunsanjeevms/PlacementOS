@@ -8,6 +8,7 @@ import {
   Coffee,
   Binary,
   Calculator,
+  Database,
   FolderKanban,
   NotebookPen,
   Mic,
@@ -62,6 +63,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { label: "Java Roadmap", to: "/app/java", icon: Coffee },
       { label: "DSA Roadmap", to: "/app/dsa", icon: Binary },
       { label: "Aptitude", to: "/app/aptitude", icon: Calculator },
+      { label: "CS Fundamentals", to: "/app/core", icon: Database },
     ],
   },
   {

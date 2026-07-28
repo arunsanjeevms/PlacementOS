@@ -45,7 +45,7 @@ export const COMPANY_STATUSES = [
 ] as const;
 export type CompanyStatus = (typeof COMPANY_STATUSES)[number];
 
-export const TRACKER_KINDS = ["java", "dsa", "aptitude"] as const;
+export const TRACKER_KINDS = ["java", "dsa", "aptitude", "core"] as const;
 export type TrackerKind = (typeof TRACKER_KINDS)[number];
 
 export const RESOURCE_TYPES = [
